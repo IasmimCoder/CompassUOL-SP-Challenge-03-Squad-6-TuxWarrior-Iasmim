@@ -20,13 +20,15 @@ public class CategoryMapper {
 
     public CategoryDTO toDto(CategoryModel categoryModel) {
         CategoryDTO dto = new CategoryDTO();
-        dto.setUuid(categoryModel.getUuid());
+        dto.setId(categoryModel.getUuid());
         dto.setName(categoryModel.getName());
         return dto;
     }
 
 
     public List<CategoryDTO> toDto(List<CategoryModel> listCategoryModels) {
-        return listCategoryModels.stream().map(this::toDto).collect(Collectors.toList());
+        return listCategoryModels.stream()
+            .map(this::toDto)
+            .collect(Collectors.toList());
     }
 }

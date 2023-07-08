@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 public class CategoryDTO {
     
-    private String uuid;
+    private String id;
 
     @NotBlank(message = "Name is required")
     @Size(min = 3, message = "Name must be at least 3 characters")
