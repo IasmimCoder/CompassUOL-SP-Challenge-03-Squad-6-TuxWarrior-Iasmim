@@ -21,7 +21,7 @@ public class ApiControllerAdvice {
         MessageExceptionHandler error = new MessageExceptionHandler(
             new Date(),
             HttpStatus.NOT_FOUND.value(),
-            "Category Not Found"
+            entityNotFoundException.getMessage()
         );
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
