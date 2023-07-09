@@ -27,13 +27,13 @@ public class CategoryService {
 
     @Transactional
     public CategoryDTO save(CategoryDTO dto) {
-        Optional<CategoryModel> optionalCategoryOptional = repository.findByName(dto.getName());
-        if (optionalCategoryOptional.isPresent()) {
+        Optional<CategoryModel> optional = repository.findByName(dto.getName());
+        if (optional.isPresent()) {
             throw new EntityAlreadyExistsException("Category" + MessageUtils.ALREADY_EXIST);
         }
-        CategoryModel categoryModel = mapper.toEntity(dto);
-        repository.save(categoryModel);
-        return mapper.toDto(categoryModel);
+        CategoryModel model = mapper.toEntity(dto);
+        repository.save(model);
+        return mapper.toDto(model);
     }
 
     @Transactional(readOnly = true)

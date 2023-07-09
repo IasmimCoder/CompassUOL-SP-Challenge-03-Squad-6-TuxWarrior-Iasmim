@@ -12,25 +12,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.compassuol.pb.challenge.products.model.dto.CategoryDTO;
-import br.com.compassuol.pb.challenge.products.service.CategoryService;
+import br.com.compassuol.pb.challenge.products.model.dto.CreateProductDTO;
+import br.com.compassuol.pb.challenge.products.model.dto.ProductDTO;
+import br.com.compassuol.pb.challenge.products.service.ProductService;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/v1/categories")
-public class CategoryController {
+@RequestMapping("/v1/products")
+public class ProductController {
     
     @Autowired
-    private CategoryService service;
+    private ProductService service;
     
     @PostMapping
-    public ResponseEntity<CategoryDTO> save(@Valid @RequestBody CategoryDTO dto) {
+    public ResponseEntity<ProductDTO> save(@Valid @RequestBody CreateProductDTO dto) {
         return ResponseEntity.status(201).body(service.save(dto));
     }
 
     @GetMapping
-    public ResponseEntity<List<CategoryDTO>> findAll() {
+    public ResponseEntity<List<ProductDTO>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
 }
