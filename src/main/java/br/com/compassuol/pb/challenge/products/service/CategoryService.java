@@ -1,12 +1,12 @@
 package br.com.compassuol.pb.challenge.products.service;
 
 import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.compassuol.pb.challenge.products.exceptions.BusinessExceptions;
 import br.com.compassuol.pb.challenge.products.exceptions.EntityAlreadyExistsException;
 import br.com.compassuol.pb.challenge.products.mapper.CategoryMapper;
 import br.com.compassuol.pb.challenge.products.model.CategoryModel;
@@ -27,12 +27,17 @@ public class CategoryService {
 
     @Transactional
     public CategoryDTO save(CategoryDTO dto) {
-        Optional<CategoryModel> optionalCategoryOptional = repository.findByName(dto.getName());
-        if (optionalCategoryOptional.isPresent()) {
-            throw new EntityAlreadyExistsException("Category " + MessageUtils.ALREADY_EXIST);
+        Optional<CategoryModel> optional = repository.findByName(dto.getName());
+        if (optional.isPresent()) {
+            throw new EntityAlreadyExistsException("Category" + MessageUtils.ALREADY_EXIST);
         }
-        CategoryModel categoryModel = mapper.toEntity(dto);
-        repository.save(categoryModel);
-        return mapper.toDto(categoryModel);
+        CategoryModel model = mapper.toEntity(dto);
+        repository.save(model);
+        return mapper.toDto(model);
+    }
+
+    @Transactional(readOnly = true)
+    public List<CategoryDTO> findAll() {
+        return mapper.toDto(repository.findAll());
     }
 }

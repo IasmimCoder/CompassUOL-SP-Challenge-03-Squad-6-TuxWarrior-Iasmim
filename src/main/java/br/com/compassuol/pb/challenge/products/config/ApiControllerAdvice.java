@@ -1,4 +1,4 @@
-package br.com.compassuol.pb.challenge.products.exceptions;
+package br.com.compassuol.pb.challenge.products.config;
 
 import java.util.Date;
 
@@ -7,6 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import br.com.compassuol.pb.challenge.products.exceptions.EntityAlreadyExistsException;
+import br.com.compassuol.pb.challenge.products.exceptions.EntityNotFoundException;
+import br.com.compassuol.pb.challenge.products.exceptions.MessageExceptionHandler;
 
 @ControllerAdvice
 public class ApiControllerAdvice {
@@ -17,7 +21,7 @@ public class ApiControllerAdvice {
         MessageExceptionHandler error = new MessageExceptionHandler(
             new Date(),
             HttpStatus.NOT_FOUND.value(),
-            "Category Not Found"
+            entityNotFoundException.getMessage()
         );
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
