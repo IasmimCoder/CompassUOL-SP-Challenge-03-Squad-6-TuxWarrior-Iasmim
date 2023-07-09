@@ -1,5 +1,8 @@
 package br.com.compassuol.pb.challenge.products.mapper;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import br.com.compassuol.pb.challenge.products.model.CategoryModel;
@@ -63,5 +66,13 @@ public class ProductMapper {
         return listModels.stream()
                 .map(this::toDto)
                 .collect(Collectors.toList());
+    }
+
+    public Page<ProductDTO> toDto(Page<ProductModel> listModels) {
+        List<ProductDTO> productDTOs = listModels.getContent().stream()
+                .map(this::toDto)
+                .collect(Collectors.toList());
+
+        return new PageImpl<>(productDTOs, listModels.getPageable(), listModels.getTotalElements());
     }
 }

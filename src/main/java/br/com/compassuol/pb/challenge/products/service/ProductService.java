@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +19,7 @@ import br.com.compassuol.pb.challenge.products.model.ProductModel;
 import br.com.compassuol.pb.challenge.products.model.dto.CreateProductDTO;
 import br.com.compassuol.pb.challenge.products.model.dto.ProductDTO;
 import br.com.compassuol.pb.challenge.products.model.dto.UpdateProductDTO;
+import br.com.compassuol.pb.challenge.products.model.enums.DirectionSort;
 import br.com.compassuol.pb.challenge.products.repository.CategoryRepository;
 import br.com.compassuol.pb.challenge.products.repository.ProductRepository;
 import br.com.compassuol.pb.challenge.products.utils.MessageUtils;
@@ -71,6 +75,23 @@ public class ProductService {
     @Transactional(readOnly = true)
     public List<ProductDTO> findAll() {
         return mapper.toDto(repository.findAll());
+    }
+
+    @Transactional(readOnly = true)
+    public Page<ProductDTO> findAll(
+            Integer page,
+            Integer linesPerPage,
+            String orderBy,
+            String direction
+            ) {
+        PageRequest pageRequest = PageRequest.of(
+            page,
+            linesPerPage,
+            Direction.valueOf(DirectionSort.fromString(direction).getDescription()),
+            orderBy
+        );
+
+        return mapper.toDto(repository.findAll(pageRequest));
     }
 
     @Transactional(readOnly = true)

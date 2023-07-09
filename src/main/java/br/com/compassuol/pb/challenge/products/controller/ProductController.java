@@ -1,10 +1,10 @@
 package br.com.compassuol.pb.challenge.products.controller;
 
-import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.compassuol.pb.challenge.products.model.dto.CreateProductDTO;
@@ -25,10 +26,10 @@ import lombok.AllArgsConstructor;
 @RestController
 @RequestMapping("/v1/products")
 public class ProductController {
-    
+
     @Autowired
     private ProductService service;
-    
+
     @PostMapping
     public ResponseEntity<ProductDTO> save(@Valid @RequestBody CreateProductDTO dto) {
         return ResponseEntity.status(201).body(service.save(dto));
@@ -40,8 +41,17 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductDTO>> findAll() {
-        return ResponseEntity.ok(service.findAll());
+    public ResponseEntity<Page<ProductDTO>> findAll(
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "5") int linesPerPage,
+            @RequestParam(defaultValue = "ASC") String direction,
+            @RequestParam(defaultValue = "name") String orderBy) {
+        Page<ProductDTO> responseDto = service.findAll(
+                page,
+                linesPerPage,
+                orderBy,
+                direction);
+        return ResponseEntity.ok(responseDto);
     }
 
     @GetMapping("{id}")
