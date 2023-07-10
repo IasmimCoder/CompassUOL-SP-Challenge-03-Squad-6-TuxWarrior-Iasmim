@@ -1,4 +1,4 @@
-package br.com.compassuol.pb.challenge.users.controller;
+package br.com.compassuol.pb.challenge.products.controller;
 
 import javax.validation.Valid;
 
@@ -15,10 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.compassuol.pb.challenge.users.model.dto.CreateUserDTO;
-import br.com.compassuol.pb.challenge.users.model.dto.UpdateUserDTO;
-import br.com.compassuol.pb.challenge.users.model.dto.UserDTO;
-import br.com.compassuol.pb.challenge.users.service.UserService;
+import br.com.compassuol.pb.challenge.products.model.dto.CreateUserDTO;
+import br.com.compassuol.pb.challenge.products.model.dto.UpdateUserDTO;
+import br.com.compassuol.pb.challenge.products.model.dto.UserDTO;
+import br.com.compassuol.pb.challenge.products.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -29,16 +30,19 @@ public class UserController {
     @Autowired
     private UserService service;
 
+    @Operation(summary = "create user")
     @PostMapping
     public ResponseEntity<UserDTO> save(@Valid @RequestBody CreateUserDTO dto) {
         return ResponseEntity.status(201).body(service.save(dto));
     }
 
+    @Operation(summary = "update by id user")
     @PutMapping("{id}")
     public ResponseEntity<UserDTO> update(@PathVariable("id") String id, @Valid @RequestBody UpdateUserDTO dto) {
         return ResponseEntity.ok(service.update(id, dto));
     }
 
+    @Operation(summary = "get all user")
     @GetMapping
     public ResponseEntity<Page<UserDTO>> findAll(
             @RequestParam(defaultValue = "0") int page,
@@ -53,11 +57,13 @@ public class UserController {
         return ResponseEntity.ok(responseDto);
     }
 
+    @Operation(summary = "get by id user")
     @GetMapping("{id}")
     public ResponseEntity<UserDTO> findById(@PathVariable String id) {
         return ResponseEntity.ok(service.findById(id));
     }
 
+    @Operation(summary = "delete user")
     @DeleteMapping("{id}")
     public ResponseEntity<String> delete(@PathVariable String id) {
         return ResponseEntity.ok(service.delete(id));

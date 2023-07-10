@@ -1,15 +1,15 @@
-package br.com.compassuol.pb.challenge.users.mapper;
+package br.com.compassuol.pb.challenge.products.mapper;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
-import br.com.compassuol.pb.challenge.users.model.RoleModel;
-import br.com.compassuol.pb.challenge.users.model.UserModel;
-import br.com.compassuol.pb.challenge.users.model.dto.CreateUserDTO;
-import br.com.compassuol.pb.challenge.users.model.dto.UpdateUserDTO;
-import br.com.compassuol.pb.challenge.users.model.dto.UserDTO;
+import br.com.compassuol.pb.challenge.products.model.RoleModel;
+import br.com.compassuol.pb.challenge.products.model.UserModel;
+import br.com.compassuol.pb.challenge.products.model.dto.CreateUserDTO;
+import br.com.compassuol.pb.challenge.products.model.dto.UpdateUserDTO;
+import br.com.compassuol.pb.challenge.products.model.dto.UserDTO;
 
 import java.time.LocalDate;
 import java.util.List;

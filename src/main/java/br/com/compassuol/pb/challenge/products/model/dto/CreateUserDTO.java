@@ -1,6 +1,5 @@
-package br.com.compassuol.pb.challenge.users.model.dto;
+package br.com.compassuol.pb.challenge.products.model.dto;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.constraints.Email;
@@ -8,7 +7,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 
-import br.com.compassuol.pb.challenge.users.anotations.AtLeastOneElement;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

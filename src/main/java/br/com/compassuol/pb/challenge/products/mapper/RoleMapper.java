@@ -1,9 +1,9 @@
-package br.com.compassuol.pb.challenge.users.mapper;
+package br.com.compassuol.pb.challenge.products.mapper;
 
 import org.springframework.stereotype.Component;
 
-import br.com.compassuol.pb.challenge.users.model.RoleModel;
-import br.com.compassuol.pb.challenge.users.model.dto.RoleDTO;
+import br.com.compassuol.pb.challenge.products.model.RoleModel;
+import br.com.compassuol.pb.challenge.products.model.dto.RoleDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;

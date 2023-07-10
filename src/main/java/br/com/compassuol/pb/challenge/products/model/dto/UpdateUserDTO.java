@@ -1,4 +1,4 @@
-package br.com.compassuol.pb.challenge.users.model.dto;
+package br.com.compassuol.pb.challenge.products.model.dto;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package br.com.compassuol.pb.challenge.users.model;
+package br.com.compassuol.pb.challenge.products.model;
 
 import java.util.ArrayList;
 import java.util.List;

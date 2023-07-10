@@ -1,26 +1,12 @@
-package br.com.compassuol.pb.challenge.users.model.dto;
+package br.com.compassuol.pb.challenge.products.model.dto;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.Check;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import br.com.compassuol.pb.challenge.users.model.RoleModel;
+import br.com.compassuol.pb.challenge.products.model.RoleModel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

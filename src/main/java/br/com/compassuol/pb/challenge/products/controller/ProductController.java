@@ -20,6 +20,7 @@ import br.com.compassuol.pb.challenge.products.model.dto.CreateProductDTO;
 import br.com.compassuol.pb.challenge.products.model.dto.ProductDTO;
 import br.com.compassuol.pb.challenge.products.model.dto.UpdateProductDTO;
 import br.com.compassuol.pb.challenge.products.service.ProductService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -30,6 +31,7 @@ public class ProductController {
     @Autowired
     private ProductService service;
 
+    @Operation(summary = "Create product")
     @PostMapping
     public ResponseEntity<ProductDTO> save(@Valid @RequestBody CreateProductDTO dto) {
         return ResponseEntity.status(201).body(service.save(dto));
@@ -40,6 +42,7 @@ public class ProductController {
         return ResponseEntity.ok(service.update(id, dto));
     }
 
+    @Operation(summary = "Get all product")
     @GetMapping
     public ResponseEntity<Page<ProductDTO>> findAll(
             @RequestParam(defaultValue = "1") int page,
@@ -54,11 +57,13 @@ public class ProductController {
         return ResponseEntity.ok(responseDto);
     }
 
+    @Operation(summary = "Get by id product")
     @GetMapping("{id}")
     public ResponseEntity<ProductDTO> findById(@PathVariable String id) {
         return ResponseEntity.ok(service.findById(id));
     }
 
+    @Operation(summary = "Delete by id product")
     @DeleteMapping("{id}")
     public ResponseEntity<String> delete(@PathVariable String id) {
         return ResponseEntity.ok(service.delete(id));

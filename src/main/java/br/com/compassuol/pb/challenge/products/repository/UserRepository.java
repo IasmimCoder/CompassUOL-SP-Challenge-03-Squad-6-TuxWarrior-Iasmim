@@ -1,11 +1,11 @@
-package br.com.compassuol.pb.challenge.users.repository;
+package br.com.compassuol.pb.challenge.products.repository;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.compassuol.pb.challenge.users.model.UserModel;
+import br.com.compassuol.pb.challenge.products.model.UserModel;
 
 
 @Repository

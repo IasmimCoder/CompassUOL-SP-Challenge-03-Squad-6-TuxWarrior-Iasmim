@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.compassuol.pb.challenge.products.model.dto.CategoryDTO;
 import br.com.compassuol.pb.challenge.products.service.CategoryService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -24,11 +25,13 @@ public class CategoryController {
     @Autowired
     private CategoryService service;
     
+    @Operation(summary = "Create Category")
     @PostMapping
     public ResponseEntity<CategoryDTO> save(@Valid @RequestBody CategoryDTO dto) {
         return ResponseEntity.status(201).body(service.save(dto));
     }
 
+    @Operation(summary = "Get Category")
     @GetMapping
     public ResponseEntity<List<CategoryDTO>> findAll() {
         return ResponseEntity.ok(service.findAll());

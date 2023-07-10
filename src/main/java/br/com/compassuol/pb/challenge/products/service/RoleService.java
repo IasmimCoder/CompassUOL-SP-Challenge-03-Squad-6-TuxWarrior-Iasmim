@@ -1,4 +1,4 @@
-package br.com.compassuol.pb.challenge.users.service;
+package br.com.compassuol.pb.challenge.products.service;
 
 import java.util.Optional;
 import java.util.List;
@@ -7,15 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.compassuol.pb.challenge.users.exceptions.BusinnesException;
-import br.com.compassuol.pb.challenge.users.exceptions.EntityAlreadyExistsException;
-import br.com.compassuol.pb.challenge.users.exceptions.EntityNotFoundException;
-import br.com.compassuol.pb.challenge.users.mapper.RoleMapper;
-import br.com.compassuol.pb.challenge.users.model.RoleModel;
-import br.com.compassuol.pb.challenge.users.model.dto.RoleDTO;
-import br.com.compassuol.pb.challenge.users.model.dto.UserDTO;
-import br.com.compassuol.pb.challenge.users.repository.RoleRepository;
-import br.com.compassuol.pb.challenge.users.utils.MessageUtils;
+import br.com.compassuol.pb.challenge.products.exceptions.EntityAlreadyExistsException;
+import br.com.compassuol.pb.challenge.products.exceptions.EntityNotFoundException;
+import br.com.compassuol.pb.challenge.products.mapper.RoleMapper;
+import br.com.compassuol.pb.challenge.products.model.RoleModel;
+import br.com.compassuol.pb.challenge.products.model.dto.RoleDTO;
+import br.com.compassuol.pb.challenge.products.repository.RoleRepository;
+import br.com.compassuol.pb.challenge.products.utils.MessageUtils;
 import lombok.AllArgsConstructor;
 
 @Service

@@ -1,4 +1,4 @@
-package br.com.compassuol.pb.challenge.users.model.dto;
+package br.com.compassuol.pb.challenge.products.model.dto;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
